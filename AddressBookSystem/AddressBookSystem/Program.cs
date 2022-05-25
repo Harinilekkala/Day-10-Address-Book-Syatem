@@ -13,6 +13,7 @@ internal class program
         ab.createcontacts();
         ab.displaycontacts();
         ab.editcontacts();
+        ab.deletecontacts();
 
     }
 }
