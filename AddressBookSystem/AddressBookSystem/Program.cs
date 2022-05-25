@@ -15,6 +15,7 @@ internal class program
         ab.editcontacts();
         ab.deletecontacts();
         ab.addmulticontacts();
+        ab.multiaddressbook();
 
     }
 }

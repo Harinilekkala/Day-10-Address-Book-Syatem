@@ -172,6 +172,24 @@ namespace AddressBookSystem
             }
         }
 
+        public  void multiaddressbook()
+        {
+            Dictionary<string, List<contacts>> dictionary = new Dictionary<string, List<contacts>>();
+            Console.WriteLine("Enter number of group to add ");
+            int numberofbooks = Convert.ToInt32(Console.ReadLine());
+            while (numberofbooks > 0)
+            {
+                Console.WriteLine("Enter Group Name: ");
+                string groupname = Console.ReadLine();
+                person person = new person();
+                addmulticontacts();
+                dictionary.Add(groupname, people);
+                numberofbooks--;
+            }
+            
+        
+        }
+
     }  
 
 }
