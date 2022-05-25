@@ -12,6 +12,7 @@ internal class program
         AddressBookSystem.person ab = new AddressBookSystem.person();
         ab.createcontacts();
         ab.displaycontacts();
+        ab.editcontacts();
 
     }
 }
