@@ -4,192 +4,143 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AddressBookSystem
+
+internal class manageContacts
 {
-    internal class person
+    List<contactModel> contactlist = new List<contactModel>();
+    contactModel contact;
+    public void inputDetails()
     {
-        public List<contacts> people = new List<contacts>();
-        public  void createcontacts()
+
+        contact = new contactModel();
+        Console.WriteLine("Enter First Name");
+        contact.firstName = Console.ReadLine();
+        Console.WriteLine("Enter Last Name");
+        contact.lastName = Console.ReadLine();
+        Console.WriteLine("Enter Address");
+        contact.address = Console.ReadLine();
+        Console.WriteLine("Enter City");
+        contact.city = Console.ReadLine();
+        Console.WriteLine("Enter State");
+        contact.state = Console.ReadLine();
+        Console.WriteLine("Enter Zip");
+        contact.zip = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Enter Phone Number");
+        contact.phoneNumber = Convert.ToInt64(Console.ReadLine());
+        Console.WriteLine("Enter E-mail");
+        contact.email = Console.ReadLine();
+        contactlist.Add(contact);
+    }
+    public void display()
+    {
+        foreach (var info in contactlist)
         {
-            contacts contact = new contacts();
-            Console.WriteLine("Enter first name: ");
-            contact.firstname = Console.ReadLine();
-
-            Console.WriteLine("Enter lastname name: ");
-            contact.lastname = Console.ReadLine();
-
-            Console.WriteLine("Enter address: ");
-            contact.address = Console.ReadLine();
-
-            Console.WriteLine("Enter contact Number: ");
-            contact.address = Console.ReadLine();
-
-            Console.WriteLine("Enter city: ");
-            contact.city = Console.ReadLine();
-
-
-            Console.WriteLine("Enter zip code: ");
-            contact.zip = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Enter state: ");
-            contact.state = Console.ReadLine();
-
-            Console.WriteLine("Enter email: ");
-            contact.email = Console.ReadLine();
-
-            people.Add(contact);
+            Console.WriteLine();
+            Console.WriteLine("First Name : " + info.firstName + "\nLast Name : " + info.lastName +
+                    "\nAddress : " + info.address + "\nCity : " + info.city + "\nState : " + info.state
+                    + "\nZip : " + info.zip + "\nPhone Number : " + info.phoneNumber + "\nE-mail : " + info.email);
         }
-        public  void displaycontacts()
+    }
+    public void edit()
+    {
+        Console.WriteLine("Enter First Name to edit");
+        string fname = Console.ReadLine();
+        contactModel editContact = contactlist.FirstOrDefault(x => x.firstName == fname);
+        if (editContact != null)
         {
-            if (people.Count == 0)
+            Console.WriteLine("Choose Field to edit");
+            Console.WriteLine("1 - First Name");
+            Console.WriteLine("2 - Last Name");
+            Console.WriteLine("3 - Address");
+            Console.WriteLine("4 - City");
+            Console.WriteLine("6 - Zip");
+            Console.WriteLine("5 - State");
+            Console.WriteLine("7 - Phone Number");
+            Console.WriteLine("8 - E-mail");
+            int select = Convert.ToInt32(Console.ReadLine());
+            switch (select)
             {
-                Console.WriteLine("address book is empty.");
-                return;
+                case 1:
+                    editContact.firstName = Console.ReadLine();
+                    break;
+                case 2:
+                    editContact.lastName = Console.ReadLine();
+                    break;
+                case 3:
+                    editContact.address = Console.ReadLine();
+                    break;
+                case 4:
+                    editContact.city = Console.ReadLine();
+                    break;
+                case 5:
+                    editContact.state = Console.ReadLine();
+                    break;
+                case 6:
+                    editContact.zip = Convert.ToInt32(Console.ReadLine());
+                    break;
+                case 7:
+                    editContact.phoneNumber = Convert.ToInt64(Console.ReadLine());
+                    break;
+                case 8:
+                    editContact.email = Console.ReadLine();
+                    break;
             }
-            Console.WriteLine("list of contacts:\n");
-            foreach (var contact in people)
-            {
-                Console.WriteLine("first name: " + contact.firstname);
-                Console.WriteLine("last name: " + contact.lastname);
-                Console.WriteLine("address: " + contact.address);
-                Console.WriteLine("city: " + contact.city);
-                Console.WriteLine("state: " + contact.state);
-                Console.WriteLine("zip Code: " + contact.zip);
-                Console.WriteLine("contact No: " + contact.phoneNo);
-                Console.WriteLine("email address: " + contact.email);
-            }
+            display();
         }
-        public  void editcontacts()
+        else
         {
-            Console.WriteLine("Enter Name of person to edit details: ");
-            string name = Console.ReadLine();
-
-            foreach (var contact in people)
-            {
-                if (contact.firstname.Equals(name))
-                {
-                    Console.WriteLine("which field you want to edit:\n1.full name\n2.last name\n3.address\n4.city\n5.state\n6.zip\n7.phoneNo\n8.email\n");
-                    Console.WriteLine("Enter your choice:");
-                    int choice = Convert.ToInt32(Console.ReadLine());
-                    switch (choice)
-                    {
-                        case 1:
-                            Console.WriteLine("Enter first name to update:");
-                            contact.firstname = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 2:
-                            Console.WriteLine("Enter last name to update:");
-                            contact.lastname = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 3:
-                            Console.WriteLine("Enter address to update:");
-                            contact.address = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 4:
-                            Console.WriteLine("Enter city to update:");
-                            contact.city = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 5:
-                            Console.WriteLine("Enter state to update:");
-                            contact.state = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 6:
-                            Console.WriteLine("Enter phone No to update:");
-                            contact.address = Console.ReadLine();
-                            break;
-                        case 7:
-                            Console.WriteLine("Enter email to update:");
-                            contact.email = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 8:
-                            Console.WriteLine("Enter first name to update:");
-                            contact.firstname = Convert.ToString(Console.ReadLine());
-                            break;
-                    }
-                }
-            }
-     }
-        public  void deletecontacts()
+            Console.WriteLine("Name Missmatch");
+        }
+    }
+    public void deleteContact()
+    {
+        Console.WriteLine("Enter First Name to Delete Contact");
+        string fname = Console.ReadLine();
+        //contact deleteContact = contactlist.FirstOrDefault(x => x.firstName.ToLower() == fname);
+        foreach (var input in contactlist.ToList())
         {
-            Console.WriteLine("Enter the Name of person to delete details: ");
-            string inp_name = Console.ReadLine();
-
-            foreach (var contact in people)
+            if (input.firstName == fname)
             {
-                if (contact.firstname.Equals(inp_name))
-                {
-                    Console.WriteLine("which field you want to edit:\n1.full name\n2.last name\n3.address\n4.city\n5.state\n6.zip\n7.phoneNo\n8.email\n");
-                    Console.WriteLine("Enter your choice:");
-                    int choice = Convert.ToInt32(Console.ReadLine());
-                    switch (choice)
-                    {
-                        case 1:
-                            Console.WriteLine("Enter first name to delete:");
-                            contact.firstname = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 2:
-                            Console.WriteLine("Enter last name to delete:");
-                            contact.lastname = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 3:
-                            Console.WriteLine("Enter address to delete:");
-                            contact.address = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 4:
-                            Console.WriteLine("Enter city to delete:");
-                            contact.city = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 5:
-                            Console.WriteLine("Enter state to delete:");
-                            contact.state = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 6:
-                            Console.WriteLine("Enter phone No to delete:");
-                            contact.address = Console.ReadLine();
-                            break;
-                        case 7:
-                            Console.WriteLine("Enter email to delete:");
-                            contact.email = Convert.ToString(Console.ReadLine());
-                            break;
-                        case 8:
-                            Console.WriteLine("Enter first name to delete:");
-                            contact.firstname = Convert.ToString(Console.ReadLine());
-                            break;
-                    }
-                }
-
+                contactlist.Remove(input);
             }
         }
-
-        public  void addmulticontacts()
+        display();
+    }
+    public void multipleContact()
+    {
+        Console.WriteLine("Enter Number of Contacts to Create");
+        int count = Convert.ToInt32(Console.ReadLine());
+        contactlist = new List<contactModel>();
+        while (count > 0)
         {
-            Console.WriteLine("How many contacts you want to add: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            while (n > 0)
-            {
-                createcontacts();
-                n--;
-            }
+
+            inputDetails();
+            count--;
+        }
+    }
+    public void dictionary()
+    {
+        Dictionary<string, List<contactModel>> dictionary = new Dictionary<string, List<contactModel>>();
+        Console.WriteLine("Enter Number of Group to Add");
+        int groupCount = Convert.ToInt32(Console.ReadLine());
+        while (groupCount > 0)
+        {
+            Console.WriteLine("Enter Group Name");
+            string groupName = Console.ReadLine();
+            multipleContact();
+            dictionary.Add(groupName, contactlist.ToList());
+            groupCount--;
         }
 
-        public  void multiaddressbook()
+        foreach (var gname in dictionary.Keys)
         {
-            Dictionary<string, List<contacts>> dictionary = new Dictionary<string, List<contacts>>();
-            Console.WriteLine("Enter number of group to add ");
-            int numberofbooks = Convert.ToInt32(Console.ReadLine());
-            while (numberofbooks > 0)
+            Console.WriteLine(gname);
+            foreach (contactModel name in dictionary[gname])
             {
-                Console.WriteLine("Enter Group Name: ");
-                string groupname = Console.ReadLine();
-                person person = new person();
-                addmulticontacts();
-                dictionary.Add(groupname, people);
-                numberofbooks--;
+                Console.WriteLine(name.firstName);
             }
-            
-        
+
         }
 
-    }  
-
+    }
 }
