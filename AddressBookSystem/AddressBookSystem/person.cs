@@ -11,10 +11,21 @@ internal class manageContacts
     contactModel contact;
     public void inputDetails()
     {
-
         contact = new contactModel();
-        Console.WriteLine("Enter First Name");
-        contact.firstName = Console.ReadLine();
+        bool status = true;
+        while (status)
+        {
+            Console.WriteLine("Enter First Name");
+            contact.firstName = Console.ReadLine();
+            if (contactlist.Any(e => (e.firstName.Equals(contact.firstName))))
+            {
+                Console.WriteLine("First Name Exists");
+            }
+            else
+            {
+                status = false;
+            }
+        }
         Console.WriteLine("Enter Last Name");
         contact.lastName = Console.ReadLine();
         Console.WriteLine("Enter Address");
@@ -113,14 +124,13 @@ internal class manageContacts
         contactlist = new List<contactModel>();
         while (count > 0)
         {
-
             inputDetails();
             count--;
         }
     }
     public void dictionary()
     {
-        Dictionary<string, List<contactModel>> dictionary = new Dictionary<string, List<contactModel>>();
+        Dictionary<string, List<contactModel>> book = new Dictionary<string, List<contactModel>>();
         Console.WriteLine("Enter Number of Group to Add");
         int groupCount = Convert.ToInt32(Console.ReadLine());
         while (groupCount > 0)
@@ -128,19 +138,18 @@ internal class manageContacts
             Console.WriteLine("Enter Group Name");
             string groupName = Console.ReadLine();
             multipleContact();
-            dictionary.Add(groupName, contactlist.ToList());
+            book.Add(groupName, contactlist.ToList());
             groupCount--;
         }
 
-        foreach (var gname in dictionary.Keys)
+        foreach (var gname in book.Keys)
         {
             Console.WriteLine(gname);
-            foreach (contactModel name in dictionary[gname])
+            foreach (contactModel name in book[gname])
             {
                 Console.WriteLine(name.firstName);
             }
-
         }
-
     }
+
 }
