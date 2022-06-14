@@ -6,10 +6,11 @@ Console.WriteLine("Enter 3 To Create, Edit & Delete Contact");
 Console.WriteLine("Enter 4 To Create Multiple Contact then Edit & Delete Contact");
 Console.WriteLine("Enter 5 To Create a Contact group then creat, Edit & Delete Contact");
 Console.WriteLine("Enter 6 Search Contact");
-Console.WriteLine("Enter 7 Search Contact by city");
-Console.WriteLine("Enter 8 To Find Contact By State");
+Console.WriteLine("Enter 7 To Display Contact By State");
+Console.WriteLine("Enter 8 To Display Contact By City");
+Console.WriteLine("Enter 9 To Display Contact By City");
+Console.WriteLine("Enter 10 To Read And Write using txt file");
 int select = Convert.ToInt32(Console.ReadLine());
-
 
 switch (select)
 {
@@ -29,8 +30,6 @@ switch (select)
     case 4:
         manage.multipleContact();
         manage.display();
-        //manage.edit();
-        //manage.deleteContact();
         break;
     case 5:
         manage.dictionary();
@@ -40,21 +39,41 @@ switch (select)
         break;
     case 6:
         Console.WriteLine("Enter 1 To Find Contact By City");
-        Console.WriteLine("Enter 1 To Find Contact By State");
-        //int option = Convert.ToInt32(Console.ReadLine());
-
+        Console.WriteLine("Enter 2 To Find Contact By State");
+        int option = Convert.ToInt32(Console.ReadLine());
+        switch (option)
+        {
+            case 1:
+                manage.FindContactByCity();
+                break;
+            case 2:
+                manage.FindContactByState();
+                break;
+        }
+        break;
+    case 7:
+        manage.DisplayContactByState();
+        break;
+    case 8:
+        manage.DisplayContactByCity();
+        break;
+    case 9:
+        Console.WriteLine("Enter 1 To Find Number of Contact By City");
+        Console.WriteLine("Enter 2 To Find Number of Contact By State");
+        int option1 = Convert.ToInt32(Console.ReadLine());
+        switch (option1)
+        {
+            case 1:
+                manage.FindNumberOfContactsByCity();
+                break;
+            case 2:
+                manage.FindNumberOfContactsByState();
+                break;
+        }
+        break;
+    case 10:
+        manage.WriteFile();
+        manage.ReadFile();
         break;
 
-    case 7:
-
-                 
-            manage.FindContactByCity();
-            break;
-      
-    case 8:
-            manage.FindContactByState();
-            break;
-
-            
-
-        }
+}

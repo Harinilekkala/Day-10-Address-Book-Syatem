@@ -1,0 +1,50 @@
+﻿friends
+First Name : Harini
+Last Name : Lekkala
+Address : My Address
+City : Vizag
+State : andhrapradesh
+Zip : 530040
+Phone Number : 9704102176
+E-mail : harini@gmail.com
+===============================
+First Name : hari
+Last Name : lekka
+Address : Ela Address
+City : Vizag
+State : AndhraPradesh
+Zip : 533040
+Phone Number : 9704102176
+E-mail : hari@gmail.com
+===============================
+===============================
+Famliy
+First Name : Mom
+Last Name : dad
+Address : My Address
+City : Vizag
+State : andhrapradesh
+Zip : 123456
+Phone Number : 123456789
+E-mail : mom@gmail.com
+===============================
+First Name : dad
+Last Name : mom
+Address : My Address
+City : vizag
+State : AndhraPradesh
+Zip : 123456
+Phone Number : 789456123
+E-mail : dad@gmail.com
+===============================
+===============================abc
+First Name : Hari
+Last Name : Lekkala
+Address : as
+City : vizag
+State : ap
+Zip : 530040
+Phone Number : 12346675
+E-mail : harini.lekkala
+===============================
+===============================
