@@ -1,0 +1,46 @@
+{
+  "friends": [
+    {
+      "firstName": "Harini",
+      "lastName": "lekkala",
+      "address": "My Address",
+      "city": "Coimbatore",
+      "state": "TamilNadu",
+      "zip": 123456,
+      "phoneNumber": 789456123,
+      "email": "harini@gmail.com"
+    },
+    {
+      "firstName": "lekkala",
+      "lastName": "harini",
+      "address": "harini Address",
+      "city": "vizag",
+      "state": "Andhrapradesh",
+      "zip": 123456,
+      "phoneNumber": 789456123,
+      "email": "hari@gmail.com"
+    }
+  ],
+  "Family": [
+    {
+      "firstName": "mom",
+      "lastName": "dad",
+      "address": "my address",
+      "city": "Coimbatore",
+      "state": "Tamilnadu",
+      "zip": 1234565,
+      "phoneNumber": 7894561233,
+      "email": "mom@gmail.com"
+    },
+    {
+      "firstName": "dad",
+      "lastName": "mom",
+      "address": "my address",
+      "city": "coimbatore",
+      "state": "TamilNadu",
+      "zip": 123456,
+      "phoneNumber": 789456123,
+      "email": "dad@gmail.com"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -345,5 +346,33 @@ internal class manageContacts
             return;
         }
         Console.WriteLine("File Not Found");
+    }
+    public void Serialization()
+    {
+        dictionary();
+        string filePath = @"D:\.net\Day-10-Address-Book-Syatem\AddressBookSystem\AddressBookSystem\ContactDetails.json";
+        string json = JsonConvert.SerializeObject(book);
+        File.WriteAllText(filePath, json);
+    }
+    public void Deserialization()
+    {
+        string filePath = @"D:\.net\Day-10-Address-Book-Syatem\AddressBookSystem\AddressBookSystem\ContactDetails.json";
+        using (StreamReader reader = new StreamReader(filePath))
+        {
+            var json = reader.ReadToEnd();
+            var item = JsonConvert.DeserializeObject<Dictionary<string, List<contactModel>>>(json);
+            foreach (var key in item.Keys)
+            {
+                Console.WriteLine(key);
+                foreach (var items in item[key])
+                {
+                    Console.WriteLine("First Name : " + items.firstName + "\nLast Name : " + items.lastName +
+                         "\nAddress : " + items.address + "\nCity : " + items.city + "\nState : " + items.state
+                         + "\nZip : " + items.zip + "\nPhone Number : " + items.phoneNumber + "\nE-mail : " + items.email);
+                    Console.WriteLine("===============================");
+                }
+                Console.WriteLine("===============================");
+            }
+        }
     }
 }
