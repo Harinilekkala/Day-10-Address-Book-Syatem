@@ -308,4 +308,42 @@ internal class manageContacts
         }
         Console.WriteLine("File Not Found");
     }
+    public void WriteCSVFile()
+    {
+        string filePath = @"D:\.net\Day-10-Address-Book-Syatem\AddressBookSystem\AddressBookSystem\ContactsFile.csv";
+        dictionary();
+        using (StreamWriter write = File.AppendText(filePath))
+        {
+            foreach (var gname in book.Keys)
+            {
+                write.WriteLine(gname);
+                foreach (contactModel name in book[gname])
+                {
+                    write.WriteLine("First Name : " + name.firstName + "\nLast Name : " + name.lastName +
+                     "\nAddress : " + name.address + "\nCity : " + name.city + "\nState : " + name.state
+                     + "\nZip : " + name.zip + "\nPhone Number : " + name.phoneNumber + "\nE-mail : " + name.email);
+                    write.WriteLine("===============================");
+                }
+
+                write.WriteLine("===============================");
+            }
+        }
+    }
+    public void ReadCSVFile()
+    {
+        string filePath = @"D:\.net\Day-10-Address-Book-Syatem\AddressBookSystem\AddressBookSystem\ContactsFile.csv";
+        if (File.Exists(filePath))
+        {
+            string[] readFile = File.ReadAllLines(filePath);
+            foreach (string lines in readFile)
+            {
+                if (lines != null)
+                {
+                    Console.WriteLine(lines);
+                }
+            }
+            return;
+        }
+        Console.WriteLine("File Not Found");
+    }
 }
